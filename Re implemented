@@ -1,0 +1,10 @@
+s[head=tail=str.length()]=str[0];
+	int p=head;
+	rep(i,1,(int)str.length()-1)
+	{
+		if(p+1<=tail && s[p+1]==str[i]) ++p;
+		else if(p-1>=head && s[p-1]==str[i]) --p;
+		else if(p==tail) s[++p]=str[i],++tail;
+		else if(p==head) s[--p]=str[i],--head;
+		else return;
+	}
