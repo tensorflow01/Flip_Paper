@@ -1,0 +1,5 @@
+for(int i=0;i<12;++i) if(ch[0][i]) q.push(ch[0][i]);
+	for(;!q.empty();q.pop()) for(int i=0,u=q.front();i<12;++i)
+		if(ch[u][i]) w[ch[u][i]]+=w[fail[ch[u][i]]=ch[fail[u]][i]],q.push(ch[u][i]);
+		else ch[u][i]=ch[fail[u]][i];
+	for(int i=0;i<(1<<12);++i) for(int j=0;j<=cnt;++j) f[i][j]=-inf;
