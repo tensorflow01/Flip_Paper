@@ -1,0 +1,11 @@
+
+	rep(i,0,11) t[0][i]=1;
+	q[head=tail=0]=1;
+	while(head<=tail)
+	{
+		int x=q[head++];
+		rep(i,0,11)
+			if(t[x][i]) fail[t[x][i]]=t[fail[x]][i],q[++tail]=t[x][i];
+			else t[x][i]=t[fail[x]][i];
+		siz[x]+=siz[fail[x]];
+	}
