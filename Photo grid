@@ -1,0 +1,7 @@
+int x=1;
+	rep(i,head,tail)
+	{
+		int c=s[i]-'a';
+		if(t[x][c]) x=t[x][c];
+		else t[x][c]=++tot,x=tot;
+	}
