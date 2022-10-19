@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             
+             x:Class="DigiAssistant.View.MainPage"
+             xmlns:viewModel="clr-namespace:DigiAssistant.ViewModel" 
+             x:DataType="viewModel:RunViewModel">
+    <ContentPage.Background Shell.BackgroundColor="#F2E5E2">
+        
+        <LinearGradientBrush>
+            <GradientStop Color="#fffcdc"
+                          Offset="0.1" />
+
+            <GradientStop Color="#d9a7c7"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <!--
+    <Shell.TitleView>
+        <Label Text="Vaani" FontSize="30" TextColor="Black" FontFamily="OpenSansSemibold" Margin="40, 10"/> 
+    </Shell.TitleView>
+-->
+    <ScrollView>
+        <VerticalStackLayout Margin="40">
+            <Image
+                Source="robotwithoutbg.gif"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="280"
+                Margin="0"
+                 HorizontalOptions="Center"/>
+
+            <Label Text="Please enter a valid command!" HorizontalOptions="Center" IsVisible="{Binding IsInvalid}" TextColor="#A9A9A9"/>
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                   Color="Indigo" IsVisible="{Binding IsLoading}" MinimumHeightRequest="40" MinimumWidthRequest="40" Margin="10,50,10,10" />
+            <Label Text="Setting up the app" HorizontalOptions="Center" IsVisible="{Binding IsLoading}" TextColor="Indigo"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="40" IsVisible="{Binding IsReady}">
+
+                <Frame BackgroundColor="White" Padding="0" CornerRadius="7" >
+                    <Entry TextColor="Black" Background="White" x:Name="Text1" Text="{Binding Text}" Placeholder="Enter the Command" MinimumWidthRequest="450" MaximumWidthRequest="500" MaximumHeightRequest="50" ReturnCommand="{Binding ExecCommand}">
+                        <Entry.PlaceholderColor>
+                            <OnPlatform x:TypeArguments="Color">
+                                <On Platform="Windows" Value="White"></On>
+                            </OnPlatform>
+                        </Entry.PlaceholderColor>
+                    </Entry>
+                </Frame>
+
+                <Button x:Name="Btn1" Text="Enter" Command="{Binding ExecCommand}" Background="#bfbebb" TextColor="Black" CornerRadius="7" Padding="10"/>
+
+            </HorizontalStackLayout>
+           
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
