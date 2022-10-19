@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:DigiAssistant.ViewModel"
+             x:Class="DigiAssistant.View.AddTeamsPage1"
+             
+             Title="AddTeamsPage1">
+    <ContentPage.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#fffcdc"
+                          Offset="0.1" />
+
+            <GradientStop Color="#d9a7c7"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry x:Name="newCommand"
+               Margin="7"
+                Placeholder="Enter Command (begin with Call/Chat)" 
+                TextColor="Black" Background="White" />
+
+        <Entry x:Name="newTeamsEmail"
+               Margin="7"
+               Grid.Row="1"
+               TextColor="Black" Background="White"
+               Placeholder="Enter Teams Email" />
+
+        <Button Text="Add Command"
+            Grid.Row="2"
+            MaximumWidthRequest="500"
+            Background="#F2E5E2"
+            BorderColor="Black" BorderWidth="1"
+            TextColor="Black"
+            Clicked="OnNewButtonClicked" />
+
+        <Label x:Name="statusMessage"
+           Grid.Row="3" />
+
+        <Button Text="Get All Commands"
+            Grid.Row="4"
+            MaximumWidthRequest="500"
+            Background="#F2E5E2"
+            BorderColor="Black" BorderWidth="1"
+            TextColor="Black"
+            Clicked="OnGetButtonClicked" />
+
+        <CollectionView x:Name="teamsCommandList" Grid.Row="5" SelectionMode="Single" SelectionChanged="selection_changed">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions HorizontalOptions="Center">
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding Id}" />
+                        <Label Grid.Column="1" Text="{Binding Command}" />
+                        <Label Grid.Column="2" Text="{Binding Field1}" />
+                        
+                        <Button Text="Update"
+                                Grid.Column="3"
+                                Margin="10"
+                                Background="#F2E5E2"
+                                BorderColor="Black" BorderWidth="1"
+                                MaximumWidthRequest="125"
+                                MaximumHeightRequest="40"
+                                TextColor="Black"
+                                Clicked="UpdateButtonClicked" />
+                        <Button Text="Delete"
+                                Grid.Column="4"
+                                Margin="10"
+                                Background="#F2E5E2"
+                                BorderColor="Black" BorderWidth="1"
+                                MaximumWidthRequest="125"
+                                MaximumHeightRequest="40"
+                                TextColor="Black"
+                                Clicked="DeleteButtonClicked" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
